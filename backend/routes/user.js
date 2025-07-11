@@ -4,7 +4,7 @@ const auth = require('../middleware/auth');
 
 const router = express.Router();
 
-// GET all stores with average rating
+
 router.get('/stores', auth(['USER']), async (req, res) => {
   const stores = await Store.findAll({
     include: [{ model: Rating }],
@@ -30,7 +30,7 @@ router.get('/stores', auth(['USER']), async (req, res) => {
   res.json(result);
 });
 
-// POST rate a store
+
 router.post('/rate', auth(['USER']), async (req, res) => {
   const { storeId, rating } = req.body;
   if (rating < 1 || rating > 5) {

@@ -15,7 +15,7 @@ function Login() {
     if (res.token) {
       localStorage.setItem('token', res.token);
       localStorage.setItem('role', res.role);
-      navigate('/dashboard'); // placeholder
+      navigate('/dashboard'); 
     } else {
       setMessage(res.message || 'Login failed');
     }

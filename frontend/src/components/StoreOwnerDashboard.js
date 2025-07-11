@@ -25,12 +25,17 @@ function StoreOwnerDashboard() {
       <p>Average Rating: {data.averageRating}</p>
       <h3>User Ratings:</h3>
       <ul>
-        {data.ratings.map((r, i) => (
-          <li key={i}>
-            <strong>{r.userName}</strong> ({r.userEmail}) - ⭐ {r.rating}
-          </li>
-        ))}
-      </ul>
+  {Array.isArray(data.ratings) && data.ratings.length > 0 ? (
+    data.ratings.map((r, i) => (
+      <li key={i}>
+        <strong>{r.userName}</strong> ({r.userEmail}) - ⭐ {r.rating}
+      </li>
+    ))
+  ) : (
+    <li>No ratings found.</li>
+  )}
+</ul>
+
     </div>
   );
 }
